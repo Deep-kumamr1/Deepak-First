@@ -1,0 +1,20 @@
+Splunk=Is a tool used to analyze the machine data
+ 
+Components of Splunk:
+1. Forwarders- Collect the data in the server
+2.Indexes - Is the Bridge btn users and logs in splunk
+3. Search Heads- The place where we are entering our queries
+ 
+ 
+Master= Dedicated server ( UI- User Interface). We need to download Splunk Enterprise Product
+Slave= The ec2 instances in which the application is hosted. We need to download Splunk Forwarder( It will forward to master)
+ 
+ 
+Master> Dedicated  Splunk Port> 9997 Listener Port
+ 
+step1(Port Enable): To allow the logs from slave to master we need to allow the ports in master, /opt/splunk/bin/ ./splunk enable listen 9997
+ 
+step2(Destination): The logs are in the slave, we should do the logs to go to master, so go to slave machine /opt/splunkforwarder/bin
+./splunk add forward-server 55.167.67.8:9997
+ 
+55.167.67.8- Master Public IP
